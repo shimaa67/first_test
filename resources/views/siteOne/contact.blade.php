@@ -28,6 +28,12 @@
                                 <input name="name" class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
                                 <label for="name">Full name</label>
                                 <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                                @if ($errors->any)
+                                @error('name')
+                                <small class="text-danger"> {{$message}}</small>
+                                @enderror
+                                @endif
+
                             </div>
                             <!-- Email address input-->
                             <div class="form-floating mb-3">
@@ -35,22 +41,49 @@
                                 <label for="email">Email address</label>
                                 <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
                                 <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                                @if ($errors->any)
+                                @error('email')
+                                <small class="text-danger"> {{$message}}</small>
+                                @enderror
+                                @endif
                             </div>
                             <!-- Phone number input-->
                             <div class="form-floating mb-3">
                                 <input name="phone" class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
                                 <label for="phone">Phone number</label>
                                 <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+                                @if ($errors->any)
+                                @error('phone')
+                                <small class="text-danger"> {{$message}}</small>
+                                @enderror
+                                @endif
                             </div>
                             <!-- Message input-->
                             <div class="form-floating mb-3">
                                 <textarea name="msg" class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
                                 <label for="message">Message</label>
                                 <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                                @if ($errors->any)
+                                @error('msg')
+                                <small class="text-danger"> {{$message}}</small>
+                                @enderror
+                                @endif
                             </div>
 
-                            <!-- Submit Button-->
-                            <div class="d-grid"><button class="btn btn-primary btn-xl" type="submit">Submit</button></div>
+                            <form action="/your-route" method="POST" enctype="multipart/form-data">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                                <div class="form-floating mb-3 mt-3">
+                                  <input name="image" class="form-control" id="image" type="file" />
+                                  <label for="image">Image</label>
+                                </div>
+
+
+                                <div class="d-grid">
+                                  <button class="btn btn-primary btn-xl" type="submit">Submit</button>
+                                </div>
+                              </form>
+
                         </form>
                     </div>
                 </div>

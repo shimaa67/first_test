@@ -13,3 +13,5 @@ Route::post('/postcontact', [SiteOneController::class, 'postcontact'])->name('po
 Route::get('/service', [SiteOneController::class, 'service'])->name('service');
 Route::get('/about', [SiteOneController::class, 'about'])->name('about');
 Route::get('/portfolio', [SiteOneController::class, 'portfolio'])->name('portfolio');
+Route::get('/viewcontact', [SiteOneController::class, 'viewcontact'])->name('viewcontact');
+
